@@ -5,6 +5,8 @@ const THEME: DefaultTheme = {
     primary: "#1EA4CE",
     secondary: "#147594",
     border: "#F4F4F4",
+    background: "#fafafa",
+    textColor: "#697488",
   },
 };
 

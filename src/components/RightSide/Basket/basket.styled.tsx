@@ -7,7 +7,6 @@ const BasketCard = styled.div`
   background: #ffffff;
   border: 8px solid #1ea4ce;
   box-sizing: border-box;
-  position: sticky;
   top: 116px;
 `;
 

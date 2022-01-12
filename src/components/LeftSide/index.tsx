@@ -1,11 +1,16 @@
 import React from "react";
+import Sorting from "./Sorting";
+import Brands from "./Brands";
+import Tags from "./Tags";
 
 const LeftSide = () => {
     return (
-        <div>
-            <h1>LeftSide</h1>
-        </div>
-    )
+      <div>
+        <Sorting />
+        <Brands />
+        <Tags />
+      </div>
+    );
 };
 
 export default LeftSide;
