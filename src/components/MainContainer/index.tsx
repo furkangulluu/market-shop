@@ -6,6 +6,7 @@ import RightSide from "../RightSide";
 import LeftSide from "../LeftSide";
 import TagList from "../TagList";
 import ProductList from "../ProductList";
+import Pagination from "../Pagination";
 import { Row, Col } from "antd";
 
 const MainContainer = () => {
@@ -14,14 +15,15 @@ const MainContainer = () => {
       <Header title="Market" />
       <Container>
         <Row>
-          <Col span={6}>
+          <Col className="col-side">
             <LeftSide />
           </Col>
-          <Col span={12}>
+          <Col className="col-mid">
             <TagList />
             <ProductList />
+            <Pagination />
           </Col>
-          <Col span={6}>
+          <Col className="col-side">
             <RightSide />
           </Col>
         </Row>
@@ -34,6 +36,27 @@ const MainContainer = () => {
 export default MainContainer;
 
 const Container = styled.div`
-  width: 80%;
-  margin: 40px 10%;
+  margin: 40px 20px;
+  display: flex;
+  justify-content: center;
+
+  .col-side {
+    width: 300px;
+  }
+
+  .col-mid {
+    width: 700px;
+  }
+
+  @media only screen and (max-width: 1062px) {
+    .col-side {
+      width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .col-mid {
+      width: 100%;
+    }
+  }
 `;

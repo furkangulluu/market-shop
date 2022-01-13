@@ -33,6 +33,15 @@ const Container = styled.div`
         height: 22px;
         width: 22px;
       }
+
+      .ant-radio-checked {
+        .ant-radio-inner {
+          border-color: ${(theme) => theme.theme.colors.primary};
+        }
+        .ant-radio-inner::after {
+          background-color: ${(theme) => theme.theme.colors.primary};
+        }
+      }
     }
   }
 `;
