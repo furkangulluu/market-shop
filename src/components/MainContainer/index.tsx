@@ -1,5 +1,16 @@
+//Packages
 import React from "react";
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+//Actions
+import {
+  GET_PRODUCTS_SAGA,
+  GET_FILTERS_SAGA,
+} from "../../redux/actions/sagaActions";
+
+//Components
 import Header from "../Header";
 import Footer from "../Footer";
 import RightSide from "../RightSide";
@@ -10,6 +21,21 @@ import Pagination from "../Pagination";
 import { Row, Col } from "antd";
 
 const MainContainer = () => {
+  const dispatch = useDispatch();
+
+  const getProducts = () => {
+    dispatch({ type: GET_PRODUCTS_SAGA });
+  };
+
+  const getFilters = () => {
+    dispatch({ type: GET_FILTERS_SAGA });
+  };
+
+  useEffect(() => {
+    getProducts();
+    getFilters();
+  }, []);
+  
   return (
     <div>
       <Header title="Market" />
