@@ -1,4 +1,3 @@
-import React from "react";
 import { Pagination } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Container } from "./pagination.styled";

@@ -48,6 +48,10 @@ const CheckboxList = styled.div`
       }
     }
   }
+  .ant-checkbox-group {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export { Card, Title, Container, CheckboxList };

@@ -1,26 +1,25 @@
-import React from "react";
+import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../hooks/slice-hook";
+import { GET_PRODUCT_BY_TYPE_SAGA } from "../../redux/actions/sagaActions";
 import { Container, Title, Tags, TypeItem } from "./typeList.styled";
 
 const TagList = () => {
+  const dispatch = useDispatch();
   const types = useAppSelector((state) => state.filters.types);
-  let tagList = types.map(item => {
-    return {...item, isSelected: item.name === 'All' }
-  });
-  function clickTag(name: string) {
-    tagList.map((x) => x.isSelected === false);
-    let index = tagList.findIndex((x) => x.name === name);
-    tagList[index].isSelected = true;
+  const selectedItemType = useAppSelector((state) => state.apiQuery.itemType);
+  
+  function clickTag(item: string) {
+    dispatch({ type: GET_PRODUCT_BY_TYPE_SAGA, payload: item });
   }
 
   return (
     <Container>
       <Title>Products</Title>
       <Tags>
-        {tagList.map((item) => {
+        {types.map((item) => {
           return (
             <TypeItem
-              className={item.isSelected ? "active" : ""}
+              className={item.name === selectedItemType ? "active" : ""}
               onClick={() => {
                 clickTag(item.name);
               }}

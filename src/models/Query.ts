@@ -5,6 +5,6 @@ export type Query = {
   order?: "asc" | "desc";
   type?: string;
   itemType?: string;
-  manufacturer?: string;
+  manufacturer?: string[];
   tags?: string[];
 };

@@ -1,4 +1,3 @@
-import React from 'react';
 import "antd/dist/antd.css";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { THEME } from "./assets/defaultTheme";

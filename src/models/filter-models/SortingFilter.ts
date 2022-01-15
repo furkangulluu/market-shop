@@ -1,6 +1,6 @@
 import { SortingType } from "../SortingType";
 
-export type Sort = {
+export type SortingFilter = {
   type: string;
   payload: SortingType;
 };

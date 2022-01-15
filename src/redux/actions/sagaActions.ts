@@ -1,4 +1,9 @@
 export const GET_PRODUCTS_SAGA: string = "GET_PRODUCTS_SAGA";
 export const GET_FILTERS_SAGA: string = "GET_FILTERS_SAGA";
 export const GET_PAGINATION_SAGA: string = "GET_PAGINATION_SAGA";
-export const GET_SORTING_SAGA: string = "GET_SORTING_SAGA";
+export const GET_PRODUCT_BY_SORTING_SAGA: string = "GET_PRODUCT_BY_SORTING_SAGA";
+export const GET_PRODUCT_BY_BRAND_SAGA: string = "GET_PRODUCT_BY_BRAND_SAGA";
+export const GET_PRODUCT_BY_TAG_SAGA: string = "GET_PRODUCT_BY_TAG_SAGA";
+export const GET_PRODUCT_BY_TYPE_SAGA: string = "GET_PRODUCT_BY_TYPE_SAGA";
+export const SEARCH_BRAND_SAGA: string = "SEARCH_BRAND_SAGA";
+export const SEARCH_TAG_SAGA: string = "SEARCH_TAG_SAGA";

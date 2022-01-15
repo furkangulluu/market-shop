@@ -1,5 +1,4 @@
 //Packages
-import React from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

@@ -1,4 +1,3 @@
-import React from "react";
 import Sorting from "./Sorting";
 import Brands from "./Brands";
 import Tags from "./Tags";

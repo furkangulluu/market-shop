@@ -1,4 +1,3 @@
-import React from "react";
 import { HeaderProps } from "./header"
 import { logo, basket } from "../../assets/icons";
 import { CustomHeader, Price, Logo, Container } from "./header.styled";

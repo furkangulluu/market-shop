@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "antd";
 import { Container, Image, Title, Price } from "../productList.styled";
 import { Product } from "../../../models/Product";

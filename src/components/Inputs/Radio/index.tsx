@@ -1,4 +1,3 @@
-import React from "react";
 import { check } from "../../../assets/icons";
 import { Container, RadioButton } from "./radio.styled"
 
