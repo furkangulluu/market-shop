@@ -15,14 +15,14 @@ import Header from "../Header";
 import Footer from "../Footer";
 import RightSide from "../RightSide";
 import LeftSide from "../LeftSide";
-import TagList from "../TagList";
+import TypeList from "../TypeList";
 import ProductList from "../ProductList";
 import Pagination from "../Pagination";
 import { Row, Col } from "antd";
 
 const MainContainer = () => {
   const dispatch = useDispatch();
-
+  
   const getProducts = () => {
     dispatch({ type: GET_PRODUCTS_SAGA });
   };
@@ -45,7 +45,7 @@ const MainContainer = () => {
             <LeftSide />
           </Col>
           <Col className="col-mid">
-            <TagList />
+            <TypeList />
             <ProductList />
             <Pagination />
           </Col>

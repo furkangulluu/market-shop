@@ -1,20 +1,21 @@
 import React from "react";
 import { Button } from "antd";
 import { Container, Image, Title, Price } from "../productList.styled";
+import { Product } from "../../../models/Product";
 
-const Product = () => {
+const ProductCard = (props: { product?: Product }) => {
   return (
     <div>
       <Container>
         <Image>
           <div className="image-box"></div>
         </Image>
-        <Price>₺ 14,99</Price>
-        <Title>Gorgeous Office Mug</Title>
+        <Price>₺ {props.product?.price}</Price>
+        <Title>{props.product?.name}</Title>
         <Button onClick={() => {}}>Add</Button>
       </Container>
     </div>
   );
 };
 
-export default Product;
+export default ProductCard;

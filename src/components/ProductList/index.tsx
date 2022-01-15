@@ -1,29 +1,19 @@
 import React from "react";
-import Product from "./Product"
+import ProductCard from "./ProductCard"
 import { ProductListContainer } from "./productList.styled";
-
+import { useAppSelector } from "../../hooks/slice-hook";
 
 const ProductList = () => {
+  const payload = useAppSelector((state) => state.products);
+
   return (
     <ProductListContainer>
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
+      {payload.products.map((item) => {
+        return <ProductCard product={item} />;
+      })}
     </ProductListContainer>
   );
 };
 
 export default ProductList;
+

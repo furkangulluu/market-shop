@@ -20,7 +20,7 @@ const Tags = styled.div`
   }
 `;
 
-const TagItem = styled.div`
+const TypeItem = styled.div`
   height: 30px;
   background: #f2f0fd;
   color: ${(theme) => theme.theme.colors.primary};
@@ -34,4 +34,4 @@ const TagItem = styled.div`
   }
 `;
 
-export { Container, Title, Tags, TagItem };
+export { Container, Title, Tags, TypeItem };

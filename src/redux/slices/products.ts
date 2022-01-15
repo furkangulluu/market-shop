@@ -2,15 +2,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Products } from "../../models/Products";
 
 const initialState: Products = {
-    products: [],
-}
+  products: [],
+  allRecord: '0'
+};
 
 export const productSlice = createSlice({
-    name: "items",
-    initialState,
-    reducers: {
-        setAllItems(state, actions: PayloadAction<Products>) {
-            state.products = [...actions.payload.products];
-        },
+  name: "products",
+  initialState,
+  reducers: {
+    setAllProducts(state, actions: PayloadAction<Products>) {
+      state.products = [...actions.payload.products];
+      state.allRecord = actions.payload.allRecord;
     },
+  },
 });

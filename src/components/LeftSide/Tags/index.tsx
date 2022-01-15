@@ -1,8 +1,11 @@
 import React from "react";
 import { Input, Checkbox } from "antd";
 import { Card, Title, Container, CheckboxList } from "./tags.styled";
+import { useAppSelector } from "../../../hooks/slice-hook";
 
 const Tags = () => {
+  const tags = useAppSelector((state) => state.filters.tags);
+
   return (
     <div>
       <Title>Tags</Title>
@@ -10,14 +13,13 @@ const Tags = () => {
         <Container>
           <Input size="large" placeholder="Search brand" />
           <CheckboxList>
-            <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-            <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-            <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-            <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-            <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-            <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-            <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-            <Checkbox onChange={() => {}}>Checkbox</Checkbox>
+            {tags.map((item) => {
+              return (
+                <Checkbox onChange={() => {}} key={item.name}>
+                  {item.name}({item.count})
+                </Checkbox>
+              );
+            })}
           </CheckboxList>
         </Container>
       </Card>

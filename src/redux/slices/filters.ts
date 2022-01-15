@@ -14,6 +14,7 @@ export const filterSlice = createSlice({
         setAllFilters(state, actions: PayloadAction<Filters>) {
             state.brands = [...actions.payload.brands];
             state.tags = [...actions.payload.tags];
+            state.types = [...actions.payload.types];
         },
     },
 });

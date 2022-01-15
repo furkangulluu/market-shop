@@ -1,4 +1,4 @@
-type Product = {
+export type Product = {
     tags: string[],
     price: number,
     name: string,
@@ -8,5 +8,3 @@ type Product = {
     manufacturer: string,
     itemType: string,
 }
-
-export default Product

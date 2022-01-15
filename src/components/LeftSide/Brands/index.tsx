@@ -1,8 +1,11 @@
 import React from 'react'
 import { Input, Checkbox } from 'antd';
 import { Card, Title, Container, CheckboxList } from "./brands.styled";
+import { useAppSelector } from '../../../hooks/slice-hook';
 
 const Brands = () => {
+  const brands = useAppSelector((state) => state.filters.brands)
+
     return (
       <div>
         <Title>Brands</Title>
@@ -10,14 +13,13 @@ const Brands = () => {
           <Container>
             <Input size="large" placeholder="Search brand" />
             <CheckboxList>
-              <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-              <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-              <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-              <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-              <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-              <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-              <Checkbox onChange={() => {}}>Checkbox</Checkbox>
-              <Checkbox onChange={() => {}}>Checkbox</Checkbox>
+              {
+                brands.map(item => {
+                  return (
+                    <Checkbox onChange={() => {}} key={item.name}>{item.name}({item.count})</Checkbox>
+                  )
+                }) 
+              }
             </CheckboxList>
           </Container>
         </Card>

@@ -7,9 +7,8 @@ const axios = defaultAxios.create({
 
 export const getAllProducts = async (query: string = "") => {
     try {
-        const todos = await axios.get("items");
-
-        return todos.data;
+        const res = await axios.get(`items${query}`);
+        return { allRecord: res.headers['x-total-count'], products: res.data};
     } catch (err) {
         return console.error(err);
     }
@@ -17,9 +16,8 @@ export const getAllProducts = async (query: string = "") => {
 
 export const getAllFilters = async () => {
     try {
-        const todos = await axios.get("filters");
-
-        return todos.data.results;
+        const res = await axios.get("filters");
+        return res.data;
     } catch (err) {
         return console.error(err);
     }
