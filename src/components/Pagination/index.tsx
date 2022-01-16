@@ -28,12 +28,11 @@ const Paginations = () => {
 
   const itemRender = (current: any, type: string, originalElement: any) => {
     if (type === "prev") {
-      return <a>{<LeftOutlined />} Prev</a>;
+      return <span>{<LeftOutlined />} Prev</span>;
     }
     if (type === "next") {
-      return <a>Next {<RightOutlined />}</a>;
+      return <span>Next {<RightOutlined />}</span>;
     }
-    
     return originalElement;
   }
 
