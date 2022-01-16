@@ -2,7 +2,7 @@ import defaultAxios from 'axios';
 
 const axios = defaultAxios.create({
   headers: { "Content-Type": "application/json" },
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://market-api-getir.herokuapp.com/",
 });
 
 export const getAllProducts = async (query: string = "") => {
