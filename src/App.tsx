@@ -1,7 +1,7 @@
-import "antd/dist/antd.css";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { THEME } from "./assets/defaultTheme";
 import MainContainer from "./components/MainContainer";
+import 'antd/dist/antd.min.css'
 
 function App() {
 

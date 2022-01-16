@@ -1,4 +1,3 @@
-import { CheckboxValueType } from 'antd/lib/checkbox/Group';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Query } from "../../models/Query";
 
