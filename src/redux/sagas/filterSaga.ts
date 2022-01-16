@@ -1,3 +1,4 @@
+import { mainSlice } from './../slices/main';
 import { TagSearchFilter } from './../../models/filter-models/TagFilter';
 import { Tag } from './../../models/Tag';
 import { Brand } from './../../models/Brand';
@@ -8,21 +9,26 @@ import { filterSlice } from "../slices/filters";
 import { BrandSearchFilter } from '../../models/filter-models/BrandFilter';
 
 export function* getFilters() {
+  yield put(mainSlice.actions.setLoading(true));
   const filters: Filters = yield call(getAllFilters);
   yield put(filterSlice.actions.setAllFilters(filters));
+  yield put(mainSlice.actions.setLoading(false));
 }
 
 export function* searchBrandFilter({ payload }: BrandSearchFilter) {
+  yield put(mainSlice.actions.setLoading(true));
   const filters: Filters = yield call(getAllFilters);
   let brand: Brand[] = filters.brands;
   if (payload) {
     brand = brand.filter((x) => x.name.toLowerCase().includes(payload.toLowerCase()));
   }
   yield put(filterSlice.actions.setSearchedBrands(brand));
+  yield put(mainSlice.actions.setLoading(false));
 }
 
 
 export function* searchTagFilter({ payload }: TagSearchFilter) {
+  yield put(mainSlice.actions.setLoading(true));
   const filters: Filters = yield call(getAllFilters);
   let tag: Tag[] = filters.tags;
   if (payload) {
@@ -31,4 +37,5 @@ export function* searchTagFilter({ payload }: TagSearchFilter) {
     );
   }
   yield put(filterSlice.actions.setSearchedTags(tag));
+  yield put(mainSlice.actions.setLoading(false));
 }

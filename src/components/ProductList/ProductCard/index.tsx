@@ -1,8 +1,15 @@
 import { Button } from "antd";
 import { Container, Image, Title, Price } from "../productList.styled";
 import { Product } from "../../../models/Product";
+import { useDispatch } from "react-redux";
+import { basketSlice } from "../../../redux/slices/basket";
 
-const ProductCard = (props: { product?: Product }) => {
+const ProductCard = (props: { product: Product }) => {
+  const dispatch = useDispatch();
+  const addToCart = (product: Product) => {
+    dispatch(basketSlice.actions.setBasket(product))
+  }
+
   return (
     <div>
       <Container>
@@ -11,7 +18,7 @@ const ProductCard = (props: { product?: Product }) => {
         </Image>
         <Price>₺ {props.product?.price}</Price>
         <Title>{props.product?.name}</Title>
-        <Button onClick={() => {}}>Add</Button>
+        <Button onClick={() => { addToCart(props.product) }}>Add</Button>
       </Container>
     </div>
   );

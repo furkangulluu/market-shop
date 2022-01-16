@@ -1,8 +1,10 @@
-import { HeaderProps } from "./header"
 import { logo, basket } from "../../assets/icons";
 import { CustomHeader, Price, Logo, Container } from "./header.styled";
+import { useAppSelector } from "../../hooks/slice-hook";
 
-const Header = (props : HeaderProps) => {
+const Header = () => {
+  const totalPrice = useAppSelector((state) => state.basket.totalPrice);
+
   return (
     <CustomHeader>
       <Container>
@@ -11,7 +13,7 @@ const Header = (props : HeaderProps) => {
         </Logo>
         <Price>
           <img src={basket} width={24} height={24} alt="Basket" />
-          <span className="price">₺ 39,50</span>
+          <span className="price">₺ {totalPrice.toFixed(2)}</span>
         </Price>
       </Container>
     </CustomHeader>

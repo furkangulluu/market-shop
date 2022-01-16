@@ -10,6 +10,10 @@ const BasketCard = styled.div`
   top: 116px;
 `;
 
+const BasketItem = styled.div`
+
+`;
+
 const TotalPrice = styled.div`
   width: 100%;
   display: flex;
@@ -17,10 +21,8 @@ const TotalPrice = styled.div`
   box-sizing: border-box;
 
   .price {
-    max-width: 92px;
     margin-top: 1rem;
     padding: 1rem;
-    font-size: 14px;
     line-height: 16px;
     color: #1ea4ce;
     background: #ffffff;
@@ -33,7 +35,7 @@ const TotalPrice = styled.div`
   }
 `;
 
-const EmptyBasket = styled.div`
+const BasketEmpty = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -86,8 +88,9 @@ const CountBox = styled.div`
 
 export {
   BasketCard,
+  BasketItem,
   TotalPrice,
-  EmptyBasket,
+  BasketEmpty,
   ItemCard,
   Title,
   Price,

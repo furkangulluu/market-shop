@@ -4,6 +4,7 @@ import { THEME } from "./assets/defaultTheme";
 import MainContainer from "./components/MainContainer";
 
 function App() {
+
   return (
     <ThemeProvider theme={THEME}>
       <GlobalStyle />

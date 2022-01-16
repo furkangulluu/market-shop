@@ -1,3 +1,4 @@
+import { mainSlice } from './../slices/main';
 import { TypeFilter } from './../../models/filter-models/TypeFilter';
 import { TagFilter } from './../../models/filter-models/TagFilter';
 import { BrandFilter } from './../../models/filter-models/BrandFilter';
@@ -13,6 +14,7 @@ import { Page } from "../../models/filter-models/Page";
 import { SortingFilter } from "../../models/filter-models/SortingFilter";
 
 export function* getProducts() {
+  yield put(mainSlice.actions.setLoading(true));
   let query: Query = {
     page: "1",
     limit: "16",
@@ -38,9 +40,11 @@ export function* getProducts() {
     })
   );
   yield put(productSlice.actions.setAllProducts(allItems));
+  yield put(mainSlice.actions.setLoading(false));
 }
 
 export function* getProductsByPagination({ payload }: Page) {
+  yield put(mainSlice.actions.setLoading(true));
   let query: Query = yield select((state) => state.apiQuery);
   query = { ...query, page: `${payload}` };
   yield put(apiQuerySlice.actions.setQuery({ ...query }));
@@ -56,9 +60,11 @@ export function* getProductsByPagination({ payload }: Page) {
   yield put(paginationSlice.actions.setCurrentPage(payload));
   yield put(paginationSlice.actions.setPagination({ totalRecord: parseInt(items.allRecord), currentPage: payload }));
   yield put(productSlice.actions.setAllProducts(items));
+  yield put(mainSlice.actions.setLoading(false));
 }
 
 export function* getProductsBySorting({ payload }: SortingFilter) {
+  yield put(mainSlice.actions.setLoading(true));
   let query: Query = yield select((state) => state.apiQuery);
   query = { ...query, page: "1", sort: payload.sort, order: payload.order };
   yield put(apiQuerySlice.actions.setQuery({ ...query }));
@@ -79,9 +85,11 @@ export function* getProductsBySorting({ payload }: SortingFilter) {
     })
   );
   yield put(productSlice.actions.setAllProducts(items));
+  yield put(mainSlice.actions.setLoading(false));
 }
 
 export function* getProductsByBrand({ payload }: BrandFilter) {
+  yield put(mainSlice.actions.setLoading(true));
   yield put(apiQuerySlice.actions.setManufacturer(payload));
   
   let query: Query = yield select((state) => state.apiQuery);
@@ -109,9 +117,11 @@ export function* getProductsByBrand({ payload }: BrandFilter) {
     })
   );
   yield put(productSlice.actions.setAllProducts(items));
+  yield put(mainSlice.actions.setLoading(false));
 }
 
 export function* getProductsByTag({ payload }: TagFilter) {
+  yield put(mainSlice.actions.setLoading(true));
   yield put(apiQuerySlice.actions.setTags(payload));
 
   let query: Query = yield select((state) => state.apiQuery);
@@ -143,9 +153,11 @@ export function* getProductsByTag({ payload }: TagFilter) {
     })
   );
   yield put(productSlice.actions.setAllProducts(items));
+  yield put(mainSlice.actions.setLoading(false));
 }
 
 export function* getProductsByType({ payload }: TypeFilter) {
+  yield put(mainSlice.actions.setLoading(true));
   let query: Query = yield select((state) => state.apiQuery);
   query = { ...query, page: "1", itemType: payload };
   yield put(apiQuerySlice.actions.setQuery({ ...query }));
@@ -166,4 +178,5 @@ export function* getProductsByType({ payload }: TypeFilter) {
     })
   );
   yield put(productSlice.actions.setAllProducts(items));
+  yield put(mainSlice.actions.setLoading(false));
 }

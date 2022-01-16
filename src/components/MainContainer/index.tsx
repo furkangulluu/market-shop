@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../hooks/slice-hook";
 
 //Actions
 import {
@@ -17,10 +18,13 @@ import LeftSide from "../LeftSide";
 import TypeList from "../TypeList";
 import ProductList from "../ProductList";
 import Pagination from "../Pagination";
+import Loading from "../Loading";
 import { Row, Col } from "antd";
 
 const MainContainer = () => {
   const dispatch = useDispatch();
+
+  const loading = useAppSelector((state) => state.main.loading);
   
   const getProducts = () => {
     dispatch({ type: GET_PRODUCTS_SAGA });
@@ -37,7 +41,8 @@ const MainContainer = () => {
   
   return (
     <div>
-      <Header title="Market" />
+      <Loading visible={loading} />
+      <Header />
       <Container>
         <Row>
           <Col className="col-side">
