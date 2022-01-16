@@ -4,6 +4,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 
   .ant-pagination-prev {
     margin-right: 40px;

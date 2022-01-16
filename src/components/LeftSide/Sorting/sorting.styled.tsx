@@ -15,6 +15,10 @@ const Title = styled.div`
   align-items: center;
   margin-bottom: 5px;
   color: ${(theme) => theme.theme.colors.textColor};
+
+  @media only screen and (max-width: 1062px) {
+    display: none;
+  }
 `;
 
 const Container = styled.div`
