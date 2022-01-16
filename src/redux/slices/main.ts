@@ -1,5 +1,4 @@
 import { Main } from './../../models/Main';
-import { ScreenType } from './../../models/ScreenType';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: Main = {

@@ -2,7 +2,7 @@ import { mainSlice } from './../slices/main';
 import { TagSearchFilter } from './../../models/filter-models/TagFilter';
 import { Tag } from './../../models/Tag';
 import { Brand } from './../../models/Brand';
-import { put, call, select } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 import { Filters } from "../../models/Filters";
 import { getAllFilters } from "../api/api";
 import { filterSlice } from "../slices/filters";

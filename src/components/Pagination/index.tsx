@@ -33,6 +33,7 @@ const Paginations = () => {
     if (type === "next") {
       return <a>Next {<RightOutlined />}</a>;
     }
+    
     return originalElement;
   }
 
