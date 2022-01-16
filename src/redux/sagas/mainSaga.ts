@@ -1,7 +1,7 @@
-import { GET_PRODUCT_BY_TYPE_SAGA } from './../actions/sagaActions';
+import { GET_PRODUCT_BY_TYPE_SAGA } from "./../actions/sagaActions";
 import { takeEvery } from "redux-saga/effects";
 
-//Actions
+//Import all actions
 import {
   GET_FILTERS_SAGA,
   GET_PRODUCTS_SAGA,
@@ -13,7 +13,7 @@ import {
   SEARCH_TAG_SAGA,
 } from "../actions/sagaActions";
 
-//Modules
+//Import product's APIs
 import {
   getProducts,
   getProductsByPagination,
@@ -22,9 +22,15 @@ import {
   getProductsByTag,
   getProductsByType,
 } from "./productSaga";
-import { getFilters, searchBrandFilter, searchTagFilter } from "./filterSaga";
 
+//Import filter's APIs
+import {
+  getFilters,
+  searchBrandFilter,
+  searchTagFilter
+} from "./filterSaga";
 
+//yields
 export default function* mainSaga() {
   yield takeEvery(GET_PRODUCTS_SAGA, getProducts);
   yield takeEvery(GET_FILTERS_SAGA, getFilters);

@@ -8,6 +8,7 @@ import { getAllFilters } from "../api/api";
 import { filterSlice } from "../slices/filters";
 import { BrandSearchFilter } from '../../models/filter-models/BrandFilter';
 
+// Getting brands, tags and types (filters) from API.
 export function* getFilters() {
   yield put(mainSlice.actions.setLoading(true));
   const filters: Filters = yield call(getAllFilters);
@@ -15,6 +16,7 @@ export function* getFilters() {
   yield put(mainSlice.actions.setLoading(false));
 }
 
+// Searhing brands from API.
 export function* searchBrandFilter({ payload }: BrandSearchFilter) {
   yield put(mainSlice.actions.setLoading(true));
   const filters: Filters = yield call(getAllFilters);
@@ -26,7 +28,7 @@ export function* searchBrandFilter({ payload }: BrandSearchFilter) {
   yield put(mainSlice.actions.setLoading(false));
 }
 
-
+// Searhing tags from API.
 export function* searchTagFilter({ payload }: TagSearchFilter) {
   yield put(mainSlice.actions.setLoading(true));
   const filters: Filters = yield call(getAllFilters);

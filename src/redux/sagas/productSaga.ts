@@ -13,6 +13,7 @@ import { Query } from "../../models/Query";
 import { Page } from "../../models/filter-models/Page";
 import { SortingFilter } from "../../models/filter-models/SortingFilter";
 
+// Getting products (items) from API.
 export function* getProducts() {
   yield put(mainSlice.actions.setLoading(true));
   let query: Query = {
@@ -43,6 +44,7 @@ export function* getProducts() {
   yield put(mainSlice.actions.setLoading(false));
 }
 
+// Getting products by paginaton (param: current page number)
 export function* getProductsByPagination({ payload }: Page) {
   yield put(mainSlice.actions.setLoading(true));
   let query: Query = yield select((state) => state.apiQuery);
@@ -63,6 +65,7 @@ export function* getProductsByPagination({ payload }: Page) {
   yield put(mainSlice.actions.setLoading(false));
 }
 
+// Getting products by sorting fields (for ex: {sort:'name', order:'asc'})
 export function* getProductsBySorting({ payload }: SortingFilter) {
   yield put(mainSlice.actions.setLoading(true));
   let query: Query = yield select((state) => state.apiQuery);
@@ -88,6 +91,7 @@ export function* getProductsBySorting({ payload }: SortingFilter) {
   yield put(mainSlice.actions.setLoading(false));
 }
 
+// Getting products by brand name (for ex: ['brand1','brand2'])
 export function* getProductsByBrand({ payload }: BrandFilter) {
   yield put(mainSlice.actions.setLoading(true));
   yield put(apiQuerySlice.actions.setManufacturer(payload));
@@ -120,6 +124,7 @@ export function* getProductsByBrand({ payload }: BrandFilter) {
   yield put(mainSlice.actions.setLoading(false));
 }
 
+// Getting products by tag name (for ex: ['tag1','tag2'])
 export function* getProductsByTag({ payload }: TagFilter) {
   yield put(mainSlice.actions.setLoading(true));
   yield put(apiQuerySlice.actions.setTags(payload));
@@ -156,6 +161,7 @@ export function* getProductsByTag({ payload }: TagFilter) {
   yield put(mainSlice.actions.setLoading(false));
 }
 
+// Getting products by type name (for ex: ['mug','shirt'])
 export function* getProductsByType({ payload }: TypeFilter) {
   yield put(mainSlice.actions.setLoading(true));
   let query: Query = yield select((state) => state.apiQuery);
