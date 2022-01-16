@@ -1,5 +1,3 @@
-import { Input, Checkbox } from "antd";
-import { Card, Title, Container, CheckboxList } from "./tags.styled";
 import { useAppSelector } from "../../../hooks/slice-hook";
 import { useDispatch } from "react-redux";
 import {
@@ -7,6 +5,7 @@ import {
   SEARCH_TAG_SAGA,
 } from "../../../redux/actions/sagaActions";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
+import FilterCard from "../../Cards/FilterCard";
 
 const Tags = () => {
   const tags = useAppSelector((state) => state.filters.tags);
@@ -25,40 +24,21 @@ const Tags = () => {
   };
 
   const input = (val: string) => {
-    dispatch({ type: SEARCH_TAG_SAGA, payload: val });
+    if (val.length > 2) {
+      dispatch({ type: SEARCH_TAG_SAGA, payload: val });
+    }
   };
 
   return (
     <div>
-      <Title>Tags</Title>
-      <Card>
-        <Container>
-          <Input
-            size="large"
-            placeholder="Search tag"
-            onChange={(e) => input(e.target.value)}
-          />
-          <CheckboxList>
-            {tagsAll && (
-              <Checkbox
-                checked={selectedTags?.includes("All")}
-                onChange={() => {
-                  change(["All"]);
-                }}
-              >
-                {`${tagsAll?.name} (${tagsAll?.count})`}
-              </Checkbox>
-            )}
-            <Checkbox.Group
-              options={options}
-              value={selectedTags}
-              onChange={(val) => {
-                change(val);
-              }}
-            />
-          </CheckboxList>
-        </Container>
-      </Card>
+      <FilterCard
+        title={"Tags"}
+        options={options}
+        selectedItem={selectedTags}
+        itemAll={tagsAll}
+        change={change}
+        input={input}
+      />
     </div>
   );
 };

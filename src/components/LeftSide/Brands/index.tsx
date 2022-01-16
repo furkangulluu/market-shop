@@ -1,10 +1,9 @@
-import { Input, Checkbox } from "antd";
-import { Card, Title, Container, CheckboxList } from "./brands.styled";
 import { useAppSelector } from "../../../hooks/slice-hook";
 import { useDispatch } from "react-redux";
 import { GET_PRODUCT_BY_BRAND_SAGA } from "../../../redux/actions/sagaActions";
 import { SEARCH_BRAND_SAGA } from "../../../redux/actions/sagaActions";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
+import FilterCard from "../../Cards/FilterCard";
 
 const Brands = () => {
   const dispatch = useDispatch();
@@ -18,7 +17,9 @@ const Brands = () => {
   const selectedBrands = useAppSelector((state) => state.apiQuery.manufacturer);
 
   const input = (val: string) => {
-    dispatch({ type: SEARCH_BRAND_SAGA, payload: val });
+    if (val.length > 2) {
+      dispatch({ type: SEARCH_BRAND_SAGA, payload: val });
+    }
   };
 
   const change = (payload: CheckboxValueType[]) => {
@@ -30,34 +31,14 @@ const Brands = () => {
 
   return (
     <div>
-      <Title>Brands</Title>
-      <Card>
-        <Container>
-          <Input
-            size="large"
-            placeholder="Search brand"
-            onChange={(e) => input(e.target.value)}
-          />
-          <CheckboxList>
-            { brandsAll && 
-            <Checkbox
-              checked={selectedBrands?.includes("All")}
-              onChange={() => {
-                change(["All"]);
-              }}
-            >
-              {`${brandsAll?.name} (${brandsAll?.count})`}
-            </Checkbox>}
-            <Checkbox.Group
-              options={options}
-              value={selectedBrands}
-              onChange={(val) => {
-                change(val);
-              }}
-            />
-          </CheckboxList>
-        </Container>
-      </Card>
+      <FilterCard
+        title={'Brands'}
+        options={options}
+        selectedItem={selectedBrands}
+        itemAll={brandsAll}
+        change={change}
+        input={input}
+      />
     </div>
   );
 };
