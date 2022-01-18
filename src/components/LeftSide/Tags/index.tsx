@@ -24,7 +24,7 @@ const Tags = () => {
   };
 
   const input = (val: string) => {
-    if (val.length > 2) {
+    if (val.length > 2 || val.length === 0) {
       dispatch({ type: SEARCH_TAG_SAGA, payload: val });
     }
   };
